@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'pages_layout.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class ContactPage extends StatelessWidget {
+  const ContactPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      currentRoute: '/home',
+      currentRoute: '/contact',
       child: const Center(
         child: Text(
-          'Welcome to HomePage!',
+          'ContactPage!',
           style: TextStyle(color: Colors.white, fontSize: 24),
         ),
       ),
