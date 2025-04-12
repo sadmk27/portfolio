@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/components/card.dart';
+import 'package:flutter_portfolio/constants/projects.dart';
 import 'pages_layout.dart';
 
 class ProjectsPage extends StatelessWidget {
@@ -7,47 +8,37 @@ class ProjectsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isMobile = screenWidth < 600;
+    return Scaffold(
+      appBar: AppBar(title: const Text('Projekty')),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          int crossAxisCount = 1;
 
-    if (isMobile) {
-      return MainLayout(
-        currentRoute: '/projects',
-        child: Column(
-          children: List.generate(3, (index) {
-            return Flexible(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AppCard(
-                  imageUrl: 'https://via.placeholder.com/150',
-                  textContent: 'Karta ${index + 1}',
-                ),
-              ),
-            );
-          }),
-        ),
-      );
-    } else {
-      return MainLayout(
-        currentRoute: '/projects',
-          child: GridView.builder(
-          padding: const EdgeInsets.all(8),
-          itemCount: 9,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-            childAspectRatio: 3 / 4,
-          ),
-          itemBuilder: (context, index) {
-            return AppCard(
-              imageUrl: 'https://via.placeholder.com/150',
-              textContent: 'Karta ${index + 1}',
-            );
-          },
-        ),
-      );
-    }
+          if (constraints.maxWidth > 1200) {
+            crossAxisCount = 4;
+          } else if (constraints.maxWidth > 800) {
+            crossAxisCount = 3;
+          } else if (constraints.maxWidth > 500) {
+            crossAxisCount = 2;
+          }
+
+          return Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: GridView.count(
+              crossAxisCount: crossAxisCount,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: 1,
+              children: projectList.map((project) {
+                return AppCard(
+                  imageUrl: project["imageUrl"]!,
+                  textContent: project["textContent"]!,
+                );
+              }).toList(),
+            ),
+          );
+        },
+      ),
+    );
   }
 }

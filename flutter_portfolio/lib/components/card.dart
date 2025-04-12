@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppCard extends StatelessWidget {
   final String imageUrl;
@@ -13,41 +14,65 @@ class AppCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
+      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.network(
-              imageUrl,
-              height: 120,
-              fit: BoxFit.cover,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          mainAxisSize: MainAxisSize.min, 
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.network(
+                imageUrl,
+                height: 180,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'lib/assets/placeholder.png',
+                    height: 180,
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
             ),
-          ),
 
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text(
+            const SizedBox(height: 12),
+            Text(
               textContent,
               style: const TextStyle(fontSize: 16),
             ),
-          ),
 
-          const Spacer(),
+            const SizedBox(height: 12),
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ElevatedButton(onPressed: () {}, child: const Text('Akcja 1')),
-                ElevatedButton(onPressed: () {}, child: const Text('Akcja 2')),
-                ElevatedButton(onPressed: () {}, child: const Text('Akcja 3')),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                    children: const [
+                      Icon(FontAwesomeIcons.github, size: 20, color: Colors.white),
+                      SizedBox(width: 8),
+                      Text("Repository",style: TextStyle(color: Colors.white)),
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                    children: const [
+                      Icon(FontAwesomeIcons.googlePlay, size: 20, color: Colors.white,),
+                      SizedBox(width: 8),
+                      Text("Download",style: TextStyle(color: Colors.white),),
+                    ],
+                  ),
+                ),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
