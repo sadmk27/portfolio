@@ -13,8 +13,8 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.background,
       elevation: 4,
       shadowColor: AppColors.shadowLight,
-      title: const Text(
-        'MyApp',
+      title: Text(
+        currentRoute.toUpperCase(),
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,

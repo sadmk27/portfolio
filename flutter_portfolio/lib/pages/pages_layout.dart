@@ -38,7 +38,7 @@ class MainLayout extends StatelessWidget {
         children: [
           const DrawerHeader(
             child: Text(
-              'MyApp Menu',
+              'Portfolio',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
@@ -62,7 +62,7 @@ class MainLayout extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.pop(context); // zamknij drawer
+        Navigator.pop(context); 
         if (!isActive) {
           Navigator.pushReplacementNamed(context, route);
         }

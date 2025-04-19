@@ -1,10 +1,10 @@
 final List<Map<String,String>> projectList = [
   {
-    "title":"",
+    "title":"Project 1",
     "imageUrl": "",
-    "textContent": "Project 1",
+    "textContent": "anpvfnapiofhgapsihdfpadshcvadpofhgafga[svaxcopvhopgvhasfgohasfopghxcopvhxcvnbadipfghbasdipfgasohdfoaxchvjxaongfasodfhgaoschvxcnvaopsdfhgopasfhgoaps]anpvfnapiofhgapsihdfpadshcvadpofhgafga[svaxcopvhopgvhasfgohasfopghxcopvhxcvnbadipfghbasdipfgasohdfoaxchvjxaongfasodfhgaoschvxcnvaopsdfhgopasfhgoaps]",
     "githubLink":"",
-    "googlePlayLink":""
+    "googlePlayLink":"https://play.google.com/store/games?hl=pl"
   },
   {
     "title":"",
