@@ -8,13 +8,13 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 600;
-
+    final currentPage = currentRoute[1].toUpperCase()+currentRoute.substring(2,currentRoute.length);
     return AppBar(
       backgroundColor: AppColors.background,
       elevation: 4,
       shadowColor: AppColors.shadowLight,
       title: Text(
-        currentRoute.toUpperCase(),
+        currentPage,
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
@@ -36,7 +36,6 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget _navItem(BuildContext context, String label, String route) {
     final isActive = currentRoute == route;
-
     return TextButton(
       onPressed: () {
         if (!isActive) {
