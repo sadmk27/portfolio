@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/colors.dart';
+import 'package:flutter_portfolio/services/url_handle.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher_string.dart'; // Dodaj w pubspec.yaml
 
@@ -18,11 +20,11 @@ class Footer extends StatelessWidget {
           Wrap(
             spacing: 20,
             children: [
-              _socialIcon(FontAwesomeIcons.facebookF, 'https://facebook.com'),
-              _socialIcon(FontAwesomeIcons.instagram, 'https://instagram.com'),
-              _socialIcon(FontAwesomeIcons.linkedinIn, 'https://linkedin.com'),
-              _socialIcon(FontAwesomeIcons.github, 'https://github.com'),
-              _socialIcon(FontAwesomeIcons.solidEnvelope, 'mailto:example@gmail.com'),
+              _socialIcon(FontAwesomeIcons.facebookF, 'https://facebook.com',context),
+              _socialIcon(FontAwesomeIcons.instagram, 'https://instagram.com',context),
+              _socialIcon(FontAwesomeIcons.linkedinIn, 'https://linkedin.com',context),
+              _socialIcon(FontAwesomeIcons.github, 'https://github.com',context),
+              _socialIcon(FontAwesomeIcons.solidEnvelope, 'mailto:example@gmail.com',context),
             ],
           ),
           const SizedBox(height: 12),
@@ -35,16 +37,16 @@ class Footer extends StatelessWidget {
     );
   }
 
-  Widget _socialIcon(IconData icon, String url) {
-    return InkWell(
-      onTap: () async {
-        if (await canLaunchUrlString(url)) {
-          await launchUrlString(url);
-        } else {
-          debugPrint('Could not launch $url');
-        }
+  Widget _socialIcon(IconData icon, String url, context) {
+    return IconButton(
+      onPressed: (){
+        UrlHandle.launchUrlWithFallback(
+          context: context,
+          url: url,
+          fallbackMessage: 'Link is not available',
+        );
       },
-      child: Icon(icon, color: Colors.white, size: 20),
+      icon: Icon(icon,size: 20,color: Colors.white,),
     );
   }
 }

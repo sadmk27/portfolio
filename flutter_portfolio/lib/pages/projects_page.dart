@@ -8,19 +8,19 @@ class ProjectsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Projekty')),
-      body: LayoutBuilder(
+    return MainLayout(
+      currentRoute: "/projects",
+      child: LayoutBuilder(
         builder: (context, constraints) {
           int crossAxisCount = 1;
 
-          if (constraints.maxWidth > 1200) {
+          if (constraints.maxWidth > 1600) {
             crossAxisCount = 4;
-          } else if (constraints.maxWidth > 800) {
+          } else if (constraints.maxWidth > 1200) {
             crossAxisCount = 3;
-          } else if (constraints.maxWidth > 500) {
+          } else if (constraints.maxWidth > 800) {
             crossAxisCount = 2;
-          }
+          } 
 
           return Padding(
             padding: const EdgeInsets.all(12.0),
@@ -31,8 +31,11 @@ class ProjectsPage extends StatelessWidget {
               childAspectRatio: 1,
               children: projectList.map((project) {
                 return AppCard(
-                  imageUrl: project["imageUrl"]!,
-                  textContent: project["textContent"]!,
+                  projectTitle: project["title"] ?? "Title",
+                  imageUrl: project["imageUrl"] ?? "",
+                  textContent: project["textContent"] ?? "Content", 
+                  github: project["githubLink"] ?? "",
+                  googlePlay: project["googlePlayLink"] ?? "",
                 );
               }).toList(),
             ),
