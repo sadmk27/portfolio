@@ -8,12 +8,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainLayout(
       currentRoute: '/home',
-      child: const Center(
-        child: Text(
-          'Welcome to HomePage!',
-          style: TextStyle(color: Colors.white, fontSize: 24),
-        ),
-      ),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/assets/banner.png'),
+            fit: BoxFit.cover,
+          ),
+      )
+    ),
     );
   }
 }
