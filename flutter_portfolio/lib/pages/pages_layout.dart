@@ -6,11 +6,13 @@ import 'package:flutter_portfolio/constants/colors.dart';
 class MainLayout extends StatelessWidget {
   final String currentRoute;
   final Widget child;
+  final double maxWidth;
 
   const MainLayout({
     super.key,
     required this.currentRoute,
     required this.child,
+    required this.maxWidth
   });
 
   @override
@@ -22,7 +24,17 @@ class MainLayout extends StatelessWidget {
       drawer: isMobile ? _buildDrawer(context) : null,
       body: Column(
         children: [
-          Expanded(child: child),
+          Expanded(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: maxWidth),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: child,
+                ),
+              ),
+            ),
+          ),
           const Footer(),
         ],
       ),

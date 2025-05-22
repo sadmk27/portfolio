@@ -10,6 +10,7 @@ class ProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainLayout(
       currentRoute: "/projects",
+      maxWidth: 1600,
       child: LayoutBuilder(
         builder: (context, constraints) {
           int crossAxisCount = 1;

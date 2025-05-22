@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainLayout(
       currentRoute: '/home',
+      maxWidth: 1440,
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

@@ -70,6 +70,7 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     return MainLayout(
       currentRoute: '/contact',
+      maxWidth: 1200,
       child: Center(
         child: Container(
           constraints: BoxConstraints(maxWidth: 600),
